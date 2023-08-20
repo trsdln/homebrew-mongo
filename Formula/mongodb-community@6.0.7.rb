@@ -14,10 +14,10 @@ class MongodbCommunityAT607 < Formula
 
   option "with-enable-test-commands", "Configures MongoDB to allow test commands such as failpoints"
 
-  depends_on "mongodb-database-tools" => :recommended
-  depends_on "mongosh" => :recommended
+  depends_on "mongodb/brew/mongodb-database-tools" => :recommended
+  depends_on "mongodb/brew/mongosh" => :recommended
 
-  conflicts_with "mongodb-enterprise"
+  conflicts_with "mongodb/brew/mongodb-enterprise"
 
   def install
     inreplace "macos_mongodb.plist" do |s|
