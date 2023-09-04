@@ -1,23 +1,23 @@
-class MongodbCommunity < Formula
+class MongodbCommunityAT60 < Formula
   desc "High-performance, schema-free, document-oriented database"
   homepage "https://www.mongodb.com/"
 
   # frozen_string_literal: true
 
   if Hardware::CPU.intel?
-    url "https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-6.0.6.tgz"
-    sha256 "61ea12cc65bc47b3ed87e550147eb0b9a513db812165a4b5d1a5841d68280045"
+    url "https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-6.0.9.tgz"
+    sha256 "823d4d377717646365b62220d74c4b4fcd91a75dc0ae18952da9df475263cd76"
   else
-    url "https://fastdl.mongodb.org/osx/mongodb-macos-arm64-6.0.6.tgz"
-    sha256 "a3ddf886901c59f185cc232282a0dcfa358d14cf48cb49d72b638d87df8eefd9"
+    url "https://fastdl.mongodb.org/osx/mongodb-macos-arm64-6.0.9.tgz"
+    sha256 "cece2f726d7728c5cd1cacc32ead75d2cb9a38a0777d20491aa62a8e680023d7"
   end
 
   option "with-enable-test-commands", "Configures MongoDB to allow test commands such as failpoints"
 
-  depends_on "mongodb-database-tools" => :recommended
-  depends_on "mongosh" => :recommended
+  depends_on "mongodb/brew/mongodb-database-tools" => :recommended
+  depends_on "mongodb/brew/mongosh" => :recommended
 
-  conflicts_with "mongodb-enterprise"
+  conflicts_with "mongodb/brew/mongodb-enterprise"
 
   def install
     inreplace "macos_mongodb.plist" do |s|
