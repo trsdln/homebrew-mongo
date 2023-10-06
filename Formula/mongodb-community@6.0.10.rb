@@ -3,6 +3,7 @@ class MongodbCommunityAT6010 < Formula
   homepage "https://www.mongodb.com/"
 
   # frozen_string_literal: true
+  #
   if Hardware::CPU.intel?
     url "https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-6.0.10.tgz"
     sha256 "3b1d55249cebf3822c19a3947801912ad2e017d3008412e18535cd610ad89e97"
