@@ -14,10 +14,10 @@ class MongodbCommunityAT60 < Formula
 
   option "with-enable-test-commands", "Configures MongoDB to allow test commands such as failpoints"
 
-  depends_on "mongodb/brew/mongodb-database-tools" => :recommended
-  depends_on "mongodb/brew/mongosh" => :recommended
+  depends_on "mongodb-database-tools" => :recommended
+  depends_on "mongosh" => :recommended
 
-  conflicts_with "mongodb/brew/mongodb-enterprise"
+  conflicts_with "mongodb-enterprise"
 
   def install
     inreplace "macos_mongodb.plist" do |s|
@@ -38,6 +38,10 @@ class MongodbCommunityAT60 < Formula
     if !(File.exist?((etc/"mongod.conf"))) then
       (etc/"mongod.conf").write mongodb_conf
     end
+  end
+
+  service do
+    name macos: "#{plist_name}"
   end
 
   def mongodb_conf
